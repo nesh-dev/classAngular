@@ -3,16 +3,25 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import {TasksModule } from './components/tasks/tasks..module';
+import {ServiceModule} from './services/service.module';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DashboardComponent,
+
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    TasksModule,
+    ServiceModule,
+    AppRoutingModule,
+    AngularFontAwesomeModule
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

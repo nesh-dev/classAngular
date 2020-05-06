@@ -1,0 +1,24 @@
+.container {
+  margin-top: 10px;
+}
+
+.todo-color {
+  background-color:#ebecf0;
+}
+
+
+.item-card {
+  margin: 10px;
+
+  .task-name {
+    margin-left: 10px;
+  }
+
+  .actions {
+    margin-left: 10px;
+    fa {
+      margin: 2px;
+    }
+  }
+
+}
