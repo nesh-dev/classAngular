@@ -9,7 +9,6 @@ import { TaskService} from '../../services/taskService/tasks.service';
 export class TasksComponent implements OnInit {
   tasks;
   numberOfTasks;
-  tag = 'important';
 
   public userInfo = {
     name: 'Kevin',
@@ -27,15 +26,32 @@ export class TasksComponent implements OnInit {
   }
 
   getTask(tag) {
-    this.tag = tag;
-    const filtered  = this.service.filterByTag(tag);
-    this.tasks = filtered;
-    return this.tasks;
+    return  this.service.filterByTag(tag);
   }
+
 
   ngDoCheck() {
     this.tasks = this.service.getTasks();
-    this.getTask(this.tag);
+    this.numberOfTasks = this.service.getLength();
+  }
+
+  getCurrentId() {
+    return this.service.getLength() + 1;
+  }
+
+  generateTags(tag) {
+    return tag.split(',');
+  }
+
+  addTask(item) {
+    const newTask = {
+      id: this.getCurrentId(),
+      name: item.name,
+      tags: this.generateTags(item.tag),
+      done: false
+    }
+    console.log(newTask)
+    return this.service.addNewTask(newTask);
   }
 
 
