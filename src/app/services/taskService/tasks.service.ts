@@ -1,5 +1,6 @@
 
 export class TaskService {
+  
   tasks = [
     {
       id: 1,
@@ -53,7 +54,16 @@ export class TaskService {
   }
 
   filterByTag(tag: string) {
-    return this.tasks.filter((item) => item.tags.includes(tag));
+    const tempTags = this.tasks;
+    this.tasks = this.tasks.filter((item) => item.tags.includes(tag));
+
+    setTimeout(() => {
+      this.tasks = tempTags;
+    }, 10000);
+  }
+
+  addNewTask(item) {
+    this.tasks.unshift(item);
   }
 
 }

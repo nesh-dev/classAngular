@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes, PreloadAllModules } from "@angular/router";
+
 
 
 const routes: Routes = [
-  {path: '', pathMatch: 'full', redirectTo: '/tasks'}
-  ];
+  { path: '', pathMatch: 'full', redirectTo: '/tasks' },
+];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

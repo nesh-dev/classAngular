@@ -14,7 +14,6 @@ export class StrikeThroughDirective {
     );
   }
 
-
   @HostListener('click') onClicks() {
     this.lineDecorator('line-through');
   }

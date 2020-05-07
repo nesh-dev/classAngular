@@ -10,22 +10,26 @@ export class TasksComponent implements OnInit {
   tasks;
   numberOfTasks;
 
-  public userInfo = {
-    name: 'Kevin',
+  userInfo = {
+    name: 'Elrophi',
     class: 'MC28',
     sex: 'male',
     role: 'Technical mentor'
   };
+
   constructor(
     private  service: TaskService
-  ) { }
+  ) {
+   }
 
   ngOnInit() {
+    this.userInfo;
     this.tasks = this.service.getTasks();
     this.numberOfTasks = this.service.getLength();
   }
 
   getTask(tag) {
+    console.log(tag, 'child property')
     return  this.service.filterByTag(tag);
   }
 
@@ -44,15 +48,15 @@ export class TasksComponent implements OnInit {
   }
 
   addTask(item) {
+    // console.log(item, 'item');
     const newTask = {
       id: this.getCurrentId(),
       name: item.name,
       tags: this.generateTags(item.tag),
       done: false
     }
-    console.log(newTask)
     return this.service.addNewTask(newTask);
-  }
+}
 
 
 

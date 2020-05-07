@@ -1,0 +1,19 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <div class="row">
+
+        <div *ngIf="loading">
+            <div class="spinner-border "></div>
+        </div>
+
+        <div class="col-md-3" ></div>
+        <div *ngFor="let gif of gifs">
+            <div class="card extra" style="width: 18rem; height: 22rem;">
+                <img src="{{gif.image}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-text">{{gif.title}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

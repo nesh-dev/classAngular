@@ -1,7 +1,11 @@
-<app-navbar [user]="userInfo"></app-navbar>
+<app-navbar [name]="userInfo.name"></app-navbar>
 
 <div class="container ">
   <div class="row">
+    <h1>{{ userInfo.name }}</h1>
+  </div>
+  <div *ngIf="tasks"  class="row">
+   
     <div class="col-4">
       <div   class="card todo-color" >
         <div class="card-body">
@@ -11,8 +15,8 @@
           </div>
 
           <h6 class="card-subtitle mb-2 text-muted">{{ numberOfTasks }} tasks</h6>
-          <div appStrikeThrough class="card item-card" *ngFor="let task of tasks; index as i; " >
-            <span class ='task-name'>{{ task.name }} </span>
+          <div  appStrikeThrough class="card item-card" *ngFor="let task of tasks; index as i; " >
+            <span class ='task-name'> {{ task.name | titlecase }} </span>
             <span class="actions">
 <!--              <fa name="trash"></fa>-->
 <!--              <fa name="plus"></fa>-->
@@ -28,7 +32,7 @@
       <div class="card todo-color">
         <div class="card-body">
           <h5 class="card-title"> Add a New Task </h5>
-          <app-task-creator (addTask)="addTask($event)"></app-task-creator>
+          <app-task-creator (taskData)="addTask($event)"></app-task-creator>
         </div>
       </div>
     </div>

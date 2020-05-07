@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import {Component, OnInit, Output, EventEmitter, ViewChild} from '@angular/core';
 
 interface TaskData {
   name: string;
@@ -12,18 +12,24 @@ interface TaskData {
 })
 export class TaskCreatorComponent implements OnInit {
 
-  @Output() addTask = new EventEmitter<TaskData>();
+  @Output() taskData = new EventEmitter<TaskData>()
+  // @ViewChild('taskForm') formValues
+
   Task = {
-    name: '',
-    tag: ''
+    tag: '',
+    name: ''
   };
+
   constructor() { }
 
   ngOnInit() {
+    
   }
 
   onSubmit() {
-    this.addTask.emit(this.Task);
+    console.log(this.Task, 'task')
+    this.taskData.emit(this.Task);
+    // this.Task = {name: ' ', tag: ' '};
   }
 
 }
